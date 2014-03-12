@@ -55,18 +55,40 @@ __BEGIN_DECLS
 #define SENSORS_HANDLE_COUNT            (1<<SENSORS_HANDLE_BITS)
 
 
-/*
- * flags for (*batch)()
- * Availability: SENSORS_DEVICE_API_VERSION_1_0
- * see (*batch)() documentation for details
+/**
+ * Sensor types
+ */
+//#define SENSOR_TYPE_ACCELEROMETER       1
+//#define SENSOR_TYPE_MAGNETIC_FIELD      2
+//#define SENSOR_TYPE_ORIENTATION         3
+//#define SENSOR_TYPE_GYROSCOPE           4
+//#define SENSOR_TYPE_LIGHT               5
+//#define SENSOR_TYPE_PRESSURE            6
+//#define SENSOR_TYPE_TEMPERATURE         7   // deprecated
+//#define SENSOR_TYPE_PROXIMITY           8
+//#define SENSOR_TYPE_GRAVITY             9
+//#define SENSOR_TYPE_LINEAR_ACCELERATION 10
+//#define SENSOR_TYPE_ROTATION_VECTOR     11
+//#define SENSOR_TYPE_RELATIVE_HUMIDITY   12
+//#define SENSOR_TYPE_AMBIENT_TEMPERATURE 13
+
+/**
+ * Values returned by the accelerometer in various locations in the universe.
+ * all values are in SI units (m/s^2)
  */
 enum {
     SENSORS_BATCH_DRY_RUN               = 0x00000001,
     SENSORS_BATCH_WAKE_UPON_FIFO_FULL   = 0x00000002
 };
+/** Maximum magnetic field on Earth's surface */
+#define MAGNETIC_FIELD_EARTH_MAX    (60.0f)
 
-/*
- * what field for meta_data_event_t
+/** Minimum magnetic field on Earth's surface */
+#define MAGNETIC_FIELD_EARTH_MIN    (30.0f)
+
+
+/**
+ * status of each sensor
  */
 enum {
     /* a previous flush operation has completed */
