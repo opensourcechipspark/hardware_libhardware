@@ -46,6 +46,7 @@ static const char *variant_keys[] = {
     "ro.hardware",  /* This goes first so that it can pick up a different
                        file on the emulator. */
     "ro.product.board",
+    "ro.product.device",
     "ro.board.platform",
     "ro.arch"
 };

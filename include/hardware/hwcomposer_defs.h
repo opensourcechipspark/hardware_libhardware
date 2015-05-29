@@ -103,9 +103,10 @@ enum {
     HWC_FRAMEBUFFER_TARGET = 3,
     HWC_TOWIN0,
     HWC_TOWIN1,
-    HWC_TOWIN2,
-    HWC_TOWIN3,
     HWC_LCDC,
+    HWC_NODRAW,
+    HWC_MIX,
+    HWC_MIX_V2
 };
 
 /*

@@ -47,6 +47,8 @@ __BEGIN_DECLS
  */
 #define HWC_HARDWARE_COMPOSER   "composer"
 
+#define	HWC_UNREFERENCED_PARAMETER(param) (param) = (param)
+
 typedef struct hwc_rect {
     int left;
     int top;
@@ -190,7 +192,11 @@ typedef struct hwc_layer_1 {
             int32_t exRight;
             int32_t exAddrOffset;
 			uint32_t realtransform;
+			#ifdef TARGET_BOARD_PLATFORM_RK312X
+			uint32_t direct_fd;
+			#else
 			uint32_t direct_addr;
+			#endif
 
 
             /* Sync fence object that will be signaled when the buffer's
@@ -541,8 +547,8 @@ typedef struct hwc_composer_device_1 {
     int (*layer_recover)(struct hwc_composer_device_1 *dev,
                     size_t numDisplays, hwc_display_contents_1_t** displays);
 
-	int (*rkCopybit)(struct hwc_composer_device_1 *dev, hwc_layer_1_t *src_layer, 
-		             hwc_layer_1_t *dst_layer, int flag);
+	int (*rkCopybit)(struct hwc_composer_device_1 *dev,buffer_handle_t src_handle,
+	                    buffer_handle_t dst_handle,int flag);
 
     //int (*onHwcComposerComplete)(struct hwc_composer_device_1 *dev);
     /*
